@@ -5,7 +5,6 @@
 @section ('content')
 
 
-
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -22,7 +21,7 @@
                                     </div>
                                 </div>
                                 <div class="userData ml-3">
-                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="#">Some Name</a></h2>
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{ Auth::user()->name }}</h2>
                                     <h6 class="d-block"><a href="#">1,500</a> Video Uploads</h6>
                                     <h6 class="d-block"><a href="#">300</a> Blog Posts</h6>
                                 </div>
@@ -32,18 +31,20 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="tab-content ml-1" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                        <form method="POST" action="/profile/create" >
+                            {{ csrf_field() }}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="tab-content ml-1" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
 
-                                        <form>
                                             <div class="row">
                                                 <div class="col-sm-3 col-md-2 col-5">
                                                     <label style="font-weight:bold;">Username</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="text" class="form-control" id="title" name="title" value="username" required>
+                                                    {{ $profile->name}}
+                                                    <input type="text" class="form-control" id="username" name="username" value="">
                                                 </div>
                                             </div>
                                             <hr />
@@ -52,7 +53,8 @@
                                                     <label style="font-weight:bold;">Email</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="text" class="form-control" id="title" name="title" value="email" required>
+                                                    {{--{{ $profile->email }}--}}
+                                                    <input type="email" class="form-control" id="email" name="email" value="">
                                                 </div>
                                             </div>
                                             <hr />
@@ -62,7 +64,8 @@
                                                     <label style="font-weight:bold;">First name</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="text" class="form-control" id="title" name="title" value="First name">
+                                                    {{--{{ $profile->firstname }}--}}
+                                                    <input type="text" class="form-control" id="firstname" name="firstname">
                                                 </div>
                                             </div>
                                             <hr />
@@ -72,7 +75,8 @@
                                                     <label style="font-weight:bold;">Last name</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="text" class="form-control" id="title" name="title" value="Last name">
+                                                    {{--{{ $profile->lastname }}--}}
+                                                    <input type="text" class="form-control" id="lastname" name="lastname">
                                                 </div>
                                             </div>
 
@@ -82,7 +86,8 @@
                                                     <label style="font-weight:bold;">Age</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="text" class="form-control" id="title" name="title" value="Age">
+                                                    {{--{{ $profile->age }}--}}
+                                                    <input type="number" class="form-control" id="age" name="age">
                                                 </div>
                                             </div>
 
@@ -92,7 +97,8 @@
                                                     <label style="font-weight:bold;">Birth date</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    <input type="text" class="form-control" id="title" name="title" value="Birth date">
+                                                    {{--{{ $profile->birthdate }}--}}
+                                                    <input type="number" class="form-control" id="birthdate" name="birthdate">
                                                 </div>
                                             </div>
 
@@ -102,20 +108,23 @@
                                                     <label style="font-weight:bold;">Bio</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                <textarea id="body" name="body" class="form-control" rows="6">
-                                                    tell something about your self
-                                                </textarea>
+                                                    {{--{{ $profile->bio }}--}}
+                                                    <textarea id="bio" name="bio" class="form-control"></textarea>
                                                 </div>
                                             </div>
+                                            <hr />
+                                            <div class="form-group">
 
+                                                <button type="submit" class="btn btn-primary">Create Profile</button>
 
-
-                                        </form>
-                                        <hr />
+                                            </div>
+                                            @include('layouts.errors')
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
+
                     </div>
                 </div>
             </div>

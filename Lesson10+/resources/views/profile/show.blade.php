@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <div class="userData ml-3">
-                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="#">Some Name</a></h2>
+                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{ $profile->username}}</h2>
                                 <h6 class="d-block"><a href="#">1,500</a> Video Uploads</h6>
                                 <h6 class="d-block"><a href="#">300</a> Blog Posts</h6>
                             </div>
@@ -41,7 +41,7 @@
                                                 <label style="font-weight:bold;">Username</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                {{ $profile->name}}
+                                                {{ $profile->username}}
                                             </div>
                                         </div>
                                         <hr />
@@ -104,10 +104,12 @@
 
                                             </div>
                                         </div>
-
-
-
                                     <hr />
+                                    <div class="form-group">
+
+                                        <a href="/profile/edit/{{Auth::user()->id}}" class="btn btn-primary">Edit Profile</a>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -117,5 +119,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection

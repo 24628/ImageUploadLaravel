@@ -16,8 +16,6 @@ class AddForeignToProfile extends Migration
         Schema::table('profiles', function(Blueprint $table)
         {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-//            $table->foreign('username')->references('name')->on('users')->onDelete('cascade');
-//            $table->foreign('email')->references('email')->on('users')->onDelete('cascade');
         });
     }
 
@@ -31,8 +29,6 @@ class AddForeignToProfile extends Migration
         Schema::table('profiles', function(Blueprint $table)
         {
             $table->dropForeign('user_id');
-//            $table->dropForeign('username');
-//            $table->dropForeign('email');
         });
     }
 }

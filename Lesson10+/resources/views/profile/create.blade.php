@@ -44,7 +44,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     {{--{{ $profile->name}}--}}
-                                                    <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}">
+                                                    <input type="text" class="form-control" id="username" name="username" value="{{ Auth::user()->name }}">
                                                 </div>
                                             </div>
                                             <hr />
