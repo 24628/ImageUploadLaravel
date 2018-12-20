@@ -4,7 +4,6 @@
 
 @section ('content')
 
-{{ dd($profile) }}
 
 <div class="container">
     <div class="row">
@@ -37,7 +36,6 @@
                             <div class="tab-content ml-1" id="myTabContent">
                                 <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
 
-                                    <form>
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
                                                 <label style="font-weight:bold;">Username</label>
@@ -109,7 +107,6 @@
 
 
 
-                                    </form>
                                     <hr />
                                 </div>
                             </div>

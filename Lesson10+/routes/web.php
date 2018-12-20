@@ -19,6 +19,8 @@ Route::get('/logout', 'SessionsController@destroy');
 
 Route::prefix('profile')->group(function () {
     Route::get('/show/{user}', 'ProfileController@index');
+    Route::get('/create', 'ProfileController@create')->name('profile.create');
+    Route::post('/create', 'ProfileController@store');
     Route::get('/show/{profile}/edit', 'ProfileController@edit');
     Route::put('/show/{profile}/edit', 'ProfileController@update');
     Route::get('/show/{profile}/delete', 'ProfileController@destroy');

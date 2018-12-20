@@ -102,7 +102,7 @@
                                                     <label style="font-weight:bold;">Bio</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                <textarea id="body" name="body" class="form-control" rows="3" >
+                                                <textarea id="body" name="body" class="form-control" rows="6">
                                                     tell something about your self
                                                 </textarea>
                                                 </div>

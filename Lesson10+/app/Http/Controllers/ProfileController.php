@@ -16,42 +16,16 @@ class ProfileController extends Controller
     public function index(User $user)
 
     {
-//        return count($profile);
 
-        if(!$user->profile()){
+        if(!$user->profile){
 
-            return redirect()->action('ProfileController@create');
+            return redirect()->route('profile.create');
 
         } else {
-
-            echo "test";
 
             return view ('profile.show',['profile' => $user->profile]);
 
         }
-//
-//        if(isset($profile) && count($profile) > 0){
-//
-//            return view('profile.show', compact('profile'));
-//
-//        } else {
-//
-//            return view('profile.edit', compact('profile'));
-//
-//        }
-
-//        if(!$profile->isEmpty()){
-//
-//            return view('profile.show', compact('profile'));
-//
-//        } else {
-//
-//            return view('profile.create', compact('profile'));
-//
-//        }
-//
-//        return view ('profile.show',compact('profile'));
-
     }
 
     /**
@@ -60,8 +34,13 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        //
+
+        $user = \Auth::user();
+
+        return view ('profile.create',compact('user'));
+
     }
 
     /**
@@ -72,7 +51,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "test";
     }
 
     /**
