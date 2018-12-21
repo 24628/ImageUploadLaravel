@@ -21,9 +21,9 @@ Route::prefix('profile')->group(function () {
     Route::get('/show/{user}', 'ProfileController@index');
     Route::get('/create', 'ProfileController@create')->name('profile.create');
     Route::post('/create', 'ProfileController@store');
-    Route::get('/show/edit/{user}', 'ProfileController@edit');
-    Route::put('/show/edit/{user}', 'ProfileController@update');
-    Route::get('/show/delete/{user}', 'ProfileController@destroy');
+    Route::get('/edit/{profile}', 'ProfileController@edit');
+    Route::post('/edit/{profile}', 'ProfileController@update');
+    Route::get('/delete/{profile}', 'ProfileController@destroy');
 });
 
 // Controller -> PostsController
@@ -31,3 +31,4 @@ Route::prefix('profile')->group(function () {
 // Elaquent model -> Post
 
 // migration -> create_posts_table
+

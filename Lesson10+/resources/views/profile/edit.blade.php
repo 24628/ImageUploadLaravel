@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-
+{{--{{dd($profile)}}--}}
 
 @section ('content')
 
@@ -21,7 +21,7 @@
                                     </div>
                                 </div>
                                 <div class="userData ml-3">
-                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{ Auth::user()->name }}</h2>
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{ $profile->username }}</h2>
                                     <h6 class="d-block"><a href="#">1,500</a> Video Uploads</h6>
                                     <h6 class="d-block"><a href="#">300</a> Blog Posts</h6>
                                 </div>
@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <form method="POST" action="/profile/create" >
+                        <form method="POST" action="/profile/edit/{{$profile->id}}" >
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-12">
@@ -43,8 +43,8 @@
                                                     <label style="font-weight:bold;">Username</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    {{ $profile->name}}
-                                                    <input type="text" class="form-control" id="username" name="username" value="">
+                                                    {{--{{ $profile->name}}--}}
+                                                    <input type="text" class="form-control" id="username" name="username" value="{{$profile->username}}">
                                                 </div>
                                             </div>
                                             <hr />
@@ -54,7 +54,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     {{--{{ $profile->email }}--}}
-                                                    <input type="email" class="form-control" id="email" name="email" value="">
+                                                    <input type="email" class="form-control" id="email" name="email" value="{{$profile->email}}">
                                                 </div>
                                             </div>
                                             <hr />
@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     {{--{{ $profile->firstname }}--}}
-                                                    <input type="text" class="form-control" id="firstname" name="firstname">
+                                                    <input type="text" class="form-control" id="firstname" name="firstname" value="{{$profile->firstname}}">
                                                 </div>
                                             </div>
                                             <hr />
@@ -76,7 +76,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     {{--{{ $profile->lastname }}--}}
-                                                    <input type="text" class="form-control" id="lastname" name="lastname">
+                                                    <input type="text" class="form-control" id="lastname" name="lastname" value="{{$profile->lastname}}">
                                                 </div>
                                             </div>
 
@@ -87,7 +87,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     {{--{{ $profile->age }}--}}
-                                                    <input type="number" class="form-control" id="age" name="age">
+                                                    <input type="number" class="form-control" id="age" name="age" value="{{$profile->age}}">
                                                 </div>
                                             </div>
 
@@ -98,7 +98,7 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     {{--{{ $profile->birthdate }}--}}
-                                                    <input type="number" class="form-control" id="birthdate" name="birthdate">
+                                                    <input type="number" class="form-control" id="birthdate" name="birthdate" value="{{$profile->birthdate}}">
                                                 </div>
                                             </div>
 
@@ -109,13 +109,13 @@
                                                 </div>
                                                 <div class="col-md-8 col-6">
                                                     {{--{{ $profile->bio }}--}}
-                                                    <textarea id="bio" name="bio" class="form-control"></textarea>
+                                                    <textarea id="bio" name="bio" class="form-control">{{$profile->bio}}</textarea>
                                                 </div>
                                             </div>
                                             <hr />
                                             <div class="form-group">
 
-                                                <button type="submit" class="btn btn-primary">Create Profile</button>
+                                                <button type="submit" class="btn btn-primary">Update Profile</button>
 
                                             </div>
                                             @include('layouts.errors')

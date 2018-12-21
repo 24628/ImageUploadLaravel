@@ -74,6 +74,7 @@ class ProfileController extends Controller
 
         $profile = new Profile;
 
+        $profile->id = \Auth::user()->id;
         $profile->user_id = \Auth::user()->id;
         $profile->username = $validated['username'];
         $profile->email = $validated['email'];
@@ -106,10 +107,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Profile $profile)
     {
 
-        return view ('profile.edit',['profile' => $user->profile]);
+        return view ('profile.edit',compact('profile'));
 
     }
 
@@ -120,9 +121,39 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile)
     {
-        //
+        // 'name','email','firstname','lastname','age','birthdate','bio'
+
+        $validated = $request->validate([
+
+            'username' => 'required',
+
+            'email' => 'required|email',
+
+            'firstname' => 'required',
+
+            'lastname' => 'required',
+
+            'age' => 'required|numeric|max:150',
+
+            'birthdate' => 'required|numeric',
+
+            'bio' => 'required|min:30'
+
+        ]);
+
+        $profile->username = $validated['username'];
+        $profile->email = $validated['email'];
+        $profile->firstname = $validated['firstname'];
+        $profile->lastname = $validated['lastname'];
+        $profile->age = $validated['age'];
+        $profile->birthdate = $validated['birthdate'];
+        $profile->bio = $validated['bio'];
+
+        $profile->update();
+
+        return redirect('/');
     }
 
     /**
@@ -131,8 +162,11 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Profile $profile)
     {
-        //
+        $profile->delete();
+
+        return redirect('/')
+            ->with('success', 'Profile deleted successfully');
     }
 }

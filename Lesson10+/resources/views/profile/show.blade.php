@@ -105,9 +105,10 @@
                                             </div>
                                         </div>
                                     <hr />
-                                    <div class="form-group">
+                                    <div class="button-box col-lg-12">
 
-                                        <a href="/profile/edit/{{Auth::user()->id}}" class="btn btn-primary">Edit Profile</a>
+                                        <a href="/profile/edit/{{$profile->id}}" class="btn btn-primary">Edit Profile</a>
+                                        <a href="/profile/delete/{{$profile->id}}" class="btn btn-primary">Delete Profile</a>
 
                                     </div>
                                 </div>
